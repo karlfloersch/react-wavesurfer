@@ -337,7 +337,9 @@ Wavesurfer.defaultProps = {
   playing: false,
   pos: 0,
   options: WaveSurfer.defaultParams,
-  onPosChange: () => {}
+  onPosChange: () => {},
+
+  onSeek: () => {}
 };
 
 export default Wavesurfer;
