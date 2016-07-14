@@ -112,10 +112,6 @@ class Wavesurfer extends Component {
         wavesurfer: this._wavesurfer,
         originalArgs: [formattedPos]
       });
-      this.props.onSeek({
-        wavesurfer: this._wavesurfer,
-        originalArgs: [formattedPos]
-      });
     });
 
     // hook up events to callback handlers passed in as props
@@ -169,6 +165,13 @@ class Wavesurfer extends Component {
         this._isReady &&
         nextProps.pos !== this.props.pos &&
         nextProps.pos !== this.state.pos) {
+      if (this.state.pos < nextProps.pos - 1 ||
+          this.state.pos > nextProps.pos + 1) {
+        this.props.onSeek({
+          wavesurfer: this._wavesurfer,
+          originalArgs: [formattedPos]
+        });
+      }
       this._seekTo(nextProps.pos);
     }
 
