@@ -112,6 +112,10 @@ class Wavesurfer extends Component {
         wavesurfer: this._wavesurfer,
         originalArgs: [formattedPos]
       });
+      this.props.onSeek({
+        wavesurfer: this._wavesurfer,
+        originalArgs: [formattedPos]
+      });
     });
 
     // hook up events to callback handlers passed in as props
@@ -294,6 +298,7 @@ Wavesurfer.propTypes = {
   volume: PropTypes.number,
   zoom: PropTypes.number,
   onPosChange: PropTypes.func,
+  onSeek: PropTypes.func,
   children: PropTypes.element,
   options: PropTypes.shape({
     audioRate: PropTypes.number,
