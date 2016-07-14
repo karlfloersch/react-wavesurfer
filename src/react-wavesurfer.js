@@ -165,14 +165,6 @@ class Wavesurfer extends Component {
         this._isReady &&
         nextProps.pos !== this.props.pos &&
         nextProps.pos !== this.state.pos) {
-      if (this.state.pos < nextProps.pos - 1 ||
-          this.state.pos > nextProps.pos + 1) {
-        this.props.onSeek({
-          wavesurfer: this._wavesurfer,
-          originalArgs: [nextProps.pos]
-        });
-      }
-
       this._seekTo(nextProps.pos);
     }
 
@@ -273,7 +265,7 @@ class Wavesurfer extends Component {
         }))
       : false;
     return (
-      <div>
+      <div onClick={this.props.onClick}>
         <div ref="wavesurfer" />
         {childrenWithProps}
       </div>
@@ -302,7 +294,7 @@ Wavesurfer.propTypes = {
   volume: PropTypes.number,
   zoom: PropTypes.number,
   onPosChange: PropTypes.func,
-  onSeek: PropTypes.func,
+  onClick: PropTypes.func,
   children: PropTypes.element,
   options: PropTypes.shape({
     audioRate: PropTypes.number,
@@ -343,7 +335,7 @@ Wavesurfer.defaultProps = {
   options: WaveSurfer.defaultParams,
   onPosChange: () => {},
 
-  onSeek: () => {}
+  onClick: () => {}
 };
 
 export default Wavesurfer;
