@@ -169,9 +169,10 @@ class Wavesurfer extends Component {
           this.state.pos > nextProps.pos + 1) {
         this.props.onSeek({
           wavesurfer: this._wavesurfer,
-          originalArgs: [formattedPos]
+          originalArgs: [nextProps.pos]
         });
       }
+
       this._seekTo(nextProps.pos);
     }
 
