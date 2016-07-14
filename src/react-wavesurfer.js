@@ -55,6 +55,7 @@ class Wavesurfer extends Component {
     this._loadMediaElt = this._loadMediaElt.bind(this);
     this._loadAudio = this._loadAudio.bind(this);
     this._seekTo = this._seekTo.bind(this);
+    this.props.onClick = this.props.onClick.bind(this.state.pos);
   }
 
   componentDidMount() {
@@ -265,7 +266,7 @@ class Wavesurfer extends Component {
         }))
       : false;
     return (
-      <div onClick={this.props.onClick(this.state.pos)}>
+      <div onClick={this.props.onClick}>
         <div ref="wavesurfer" />
         {childrenWithProps}
       </div>
