@@ -45,7 +45,6 @@ class Wavesurfer extends Component {
       pos: 0,
       clicked: false
     };
-    this.clicked = false;
 
     if (typeof WaveSurfer === undefined) {
       throw new Error('WaveSurfer is undefined!');
@@ -192,16 +191,22 @@ class Wavesurfer extends Component {
     }
 
     // call props.onClick if clicked
-    // if (this.clicked) {
-    //   this.clicked = false;
-    //   this.props.onClick({
-    //     wavesurfer: this._wavesurfer,
-    //     pos: nextProps.pos
-    //   });
-    // }
+    if (this.state.clicked) {
+      this.setState({
+        clicked: true
+      });
+      this.props.onClick({
+        wavesurfer: this._wavesurfer,
+        pos: nextProps.pos
+      });
+    }
   }
 
   shouldComponentUpdate() {
+    if (this.state.clicked) {
+      return true;
+    }
+
     return false;
   }
 
@@ -236,13 +241,8 @@ class Wavesurfer extends Component {
   }
 
   _onClick() {
-    this.props.onClick({
-      wavesurfer: this._wavesurfer,
-      pos: this.props.pos
-    });
-    this.clicked = true;
     this.setState({
-      clicked: !this.state.clicked
+      clicked: true
     });
   }
 
