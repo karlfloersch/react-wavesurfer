@@ -101,13 +101,10 @@ class Wavesurfer extends Component {
       });
     });
 
-    this._wavesurfer.on('click', (pos) => {
-      this.setState({
-        pos
-      });
+    this._wavesurfer.drawer.on('click', (e, progress) => {
       this.props.onClick({
         wavesurfer: this._wavesurfer,
-        originalArgs: [pos]
+        originalArgs: [progress]
       });
     });
 
