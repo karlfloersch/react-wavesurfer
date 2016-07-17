@@ -192,7 +192,9 @@ class Wavesurfer extends Component {
 
     // call props.onClick if clicked
     if (nextProps.clicked) {
-      this.state.clicked = false;
+      this.setState({
+        clicked: false
+      });
       this.props.onClick({
         wavesurfer: this._wavesurfer,
         pos: nextProps.pos
