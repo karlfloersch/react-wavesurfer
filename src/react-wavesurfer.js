@@ -42,9 +42,9 @@ class Wavesurfer extends Component {
     super(props);
 
     this.state = {
-      pos: 0,
-      clicked: false
+      pos: 0
     };
+    this.clicked = false;
 
     if (typeof WaveSurfer === undefined) {
       throw new Error('WaveSurfer is undefined!');
@@ -191,10 +191,8 @@ class Wavesurfer extends Component {
     }
 
     // call props.onClick if clicked
-    if (nextProps.clicked) {
-      this.setState({
-        clicked: false
-      });
+    if (this.clicked) {
+      this.clicked = false;
       this.props.onClick({
         wavesurfer: this._wavesurfer,
         pos: nextProps.pos
@@ -237,9 +235,7 @@ class Wavesurfer extends Component {
   }
 
   _onClick() {
-    this.setState({
-      clicked: true
-    });
+    this.clicked = true;
   }
 
   // load a media element selector or HTML element
