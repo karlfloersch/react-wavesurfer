@@ -55,6 +55,7 @@ class Wavesurfer extends Component {
     this._loadMediaElt = this._loadMediaElt.bind(this);
     this._loadAudio = this._loadAudio.bind(this);
     this._seekTo = this._seekTo.bind(this);
+    this._onClick = this._onClick.bind(this);
   }
 
   componentDidMount() {
@@ -223,6 +224,13 @@ class Wavesurfer extends Component {
     }
   }
 
+  _onClick() {
+    this.props.onClick({
+      wavesurfer: this._wavesurfer,
+      originalArgs: [this.state.pos]
+    });
+  }
+
   // load a media element selector or HTML element
   // if selector, get the HTML element for it
   // and pass to _loadAudio
@@ -265,7 +273,7 @@ class Wavesurfer extends Component {
         }))
       : false;
     return (
-      <div onClick={this.props.onClick}>
+      <div onClick={this._onClick}>
         <div ref="wavesurfer" />
         {childrenWithProps}
       </div>
