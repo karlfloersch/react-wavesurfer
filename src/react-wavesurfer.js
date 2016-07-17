@@ -192,13 +192,13 @@ class Wavesurfer extends Component {
     }
 
     // call props.onClick if clicked
-    if (this.clicked) {
-      this.clicked = false;
-      this.props.onClick({
-        wavesurfer: this._wavesurfer,
-        pos: nextProps.pos
-      });
-    }
+    // if (this.clicked) {
+    //   this.clicked = false;
+    //   this.props.onClick({
+    //     wavesurfer: this._wavesurfer,
+    //     pos: nextProps.pos
+    //   });
+    // }
   }
 
   shouldComponentUpdate() {
@@ -284,7 +284,7 @@ class Wavesurfer extends Component {
         }))
       : false;
     return (
-      <div onClick={this._onClick}>
+      <div>
         <div ref="wavesurfer" />
         {childrenWithProps}
       </div>
