@@ -237,7 +237,7 @@ class Wavesurfer extends Component {
 
   _onClick() {
     this.props.onClick({
-      wavesurfer: this.wavesurfer,
+      wavesurfer: this._wavesurfer,
       pos: this.props.pos
     });
     this.clicked = true;
