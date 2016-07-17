@@ -42,7 +42,8 @@ class Wavesurfer extends Component {
     super(props);
 
     this.state = {
-      pos: 0
+      pos: 0,
+      clicked: false
     };
 
     if (typeof WaveSurfer === undefined) {
@@ -188,6 +189,15 @@ class Wavesurfer extends Component {
     if (this.props.zoom !== nextProps.zoom) {
       this._wavesurfer.zoom(nextProps.zoom);
     }
+
+    // call props.onClick if clicked
+    if (nextProps.clicked) {
+      this.state.clicked = false;
+      this.props.onClick({
+        wavesurfer: this._wavesurfer,
+        pos: nextProps.pos
+      });
+    }
   }
 
   shouldComponentUpdate() {
@@ -225,9 +235,8 @@ class Wavesurfer extends Component {
   }
 
   _onClick() {
-    this.props.onClick({
-      wavesurfer: this._wavesurfer,
-      originalArgs: [this.state.pos]
+    this.setState({
+      clicked: true
     });
   }
 
