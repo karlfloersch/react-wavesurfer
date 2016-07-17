@@ -236,6 +236,10 @@ class Wavesurfer extends Component {
   }
 
   _onClick() {
+    this.props.onClick({
+      wavesurfer: this.wavesurfer,
+      pos: this.props.pos
+    });
     this.clicked = true;
     this.setState({
       clicked: !this.state.clicked
