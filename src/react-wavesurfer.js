@@ -101,6 +101,16 @@ class Wavesurfer extends Component {
       });
     });
 
+    this._wavesurfer.on('click', (pos) => {
+      this.setState({
+        pos
+      });
+      this.props.onClick({
+        wavesurfer: this._wavesurfer,
+        originalArgs: [pos]
+      });
+    });
+
     // `audioprocess` is not fired when seeking, so we have to plug into the
     // `seek` event and calculate the equivalent in seconds (seek event
     // receives a position float 0-1) – See the README.md for explanation why we
@@ -191,15 +201,15 @@ class Wavesurfer extends Component {
     }
 
     // call props.onClick if clicked
-    if (this.state.clicked) {
-      this.setState({
-        clicked: true
-      });
-      this.props.onClick({
-        wavesurfer: this._wavesurfer,
-        pos: nextProps.pos
-      });
-    }
+    // if (this.state.clicked) {
+    //   this.setState({
+    //     clicked: true
+    //   });
+    //   this.props.onClick({
+    //     wavesurfer: this._wavesurfer,
+    //     pos: nextProps.pos
+    //   });
+    // }
   }
 
   shouldComponentUpdate() {
@@ -288,7 +298,7 @@ class Wavesurfer extends Component {
         }))
       : false;
     return (
-      <div onClick={this._onClick}>
+      <div>
         <div ref="wavesurfer" />
         {childrenWithProps}
       </div>
