@@ -288,7 +288,7 @@ class Wavesurfer extends Component {
         }))
       : false;
     return (
-      <div>
+      <div onClick={this._onClick}>
         <div ref="wavesurfer" />
         {childrenWithProps}
       </div>
