@@ -42,7 +42,8 @@ class Wavesurfer extends Component {
     super(props);
 
     this.state = {
-      pos: 0
+      pos: 0,
+      clicked: false
     };
     this.clicked = false;
 
@@ -236,6 +237,9 @@ class Wavesurfer extends Component {
 
   _onClick() {
     this.clicked = true;
+    this.setState({
+      clicked: !this.state.clicked
+    });
   }
 
   // load a media element selector or HTML element
