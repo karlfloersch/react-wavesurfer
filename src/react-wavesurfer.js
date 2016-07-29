@@ -104,7 +104,7 @@ class Wavesurfer extends Component {
     this._wavesurfer.drawer.on('click', (e, progress) => {
       this.props.onClick({
         wavesurfer: this._wavesurfer,
-        originalArgs: [progress]
+        originalArgs: [_posToSec(progress)]
       });
     });
 
